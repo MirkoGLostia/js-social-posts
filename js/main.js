@@ -88,6 +88,8 @@ const posts = [
 
 const like = [];
 
+const counterOfLikes = [];
+
 
 posts.forEach(element => {
 
@@ -124,20 +126,15 @@ posts.forEach(element => {
     </div>
     `
 
-    // document.getElementById(`submit${element.id}`).addEventListener("click", () => {
-        
-    //         document.querySelector(`#submit${element.id} span`).classList.add("like-button--liked");
-            
-    //     }
-    // );
-
     like.push(`submit${element.id}`)
+
+    counterOfLikes.push(`like-counter-${element.id}`)
     
 });
 
 console.log(like);
 
-like.forEach(element => {
+like.forEach((element, i) => {
 
     document.getElementById(element).addEventListener("click", 
     function(event) {
@@ -145,6 +142,14 @@ like.forEach(element => {
         event.preventDefault();
         
         document.querySelector(`#${element} span`).classList.add("like-button--liked");
+
+        let counter = document.getElementById(counterOfLikes[i]);
+
+        let counterValue = parseInt(counter.innerHTML); 
+
+        counterValue++
+
+        counter.innerHTML = counterValue;
         
     });
 });
