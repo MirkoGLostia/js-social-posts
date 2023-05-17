@@ -139,7 +139,10 @@ console.log(like);
 
 like.forEach(element => {
 
-    document.getElementById(element).addEventListener("click", () => {
+    document.getElementById(element).addEventListener("click", 
+    function(event) {
+
+        event.preventDefault();
         
         document.querySelector(`#${element} span`).classList.add("like-button--liked");
         
