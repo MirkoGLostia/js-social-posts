@@ -90,6 +90,8 @@ const like = [];
 
 const counterOfLikes = [];
 
+const postLiked = [];
+
 
 posts.forEach(element => {
 
@@ -143,6 +145,8 @@ like.forEach((element, i) => {
         
         document.querySelector(`#${element} span`).classList.add("like-button--liked");
 
+        postLiked.push(counterOfLikes[i])
+
         let counter = document.getElementById(counterOfLikes[i]);
 
         let counterValue = parseInt(counter.innerHTML); 
@@ -150,6 +154,8 @@ like.forEach((element, i) => {
         counterValue++
 
         counter.innerHTML = counterValue;
+
+        console.log(postLiked);
         
     });
 });
