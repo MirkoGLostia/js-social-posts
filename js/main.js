@@ -143,19 +143,47 @@ like.forEach((element, i) => {
 
         event.preventDefault();
         
-        document.querySelector(`#${element} span`).classList.add("like-button--liked");
+        let pointerOfClick = document.querySelector(`#${element} span`);
 
-        postLiked.push(counterOfLikes[i])
+        let pointerOfClickClass = pointerOfClick.classList.value;
 
-        let counter = document.getElementById(counterOfLikes[i]);
+        if (!pointerOfClickClass.includes("like-button--liked")) {
 
-        let counterValue = parseInt(counter.innerHTML); 
+            pointerOfClick.classList.add("like-button--liked");
 
-        counterValue++
+            postLiked.push(counterOfLikes[i])
 
-        counter.innerHTML = counterValue;
+            let counter = document.getElementById(counterOfLikes[i]);
 
-        console.log(postLiked);
+            let counterValue = parseInt(counter.innerHTML); 
+
+            counterValue++
+
+            counter.innerHTML = counterValue;
+
+            console.log(postLiked);
+            
+        } else {
+
+            pointerOfClick.classList.remove("like-button--liked");
+
+            const index = postLiked.indexOf(counterOfLikes[i]);
+
+            const x = postLiked.splice(index, 1);
+
+            let counter = document.getElementById(counterOfLikes[i]);
+
+            let counterValue = parseInt(counter.innerHTML); 
+
+            counterValue--
+
+            counter.innerHTML = counterValue;
+
+            console.log(postLiked);
+            
+        }
+
+        
         
     });
 });
